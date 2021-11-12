@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <title> ToDo List </title>
 </head>
@@ -21,7 +22,7 @@
                 <nav>
                     <label for="add_task">
                         Aggiungi alla lista&colon;
-                        <input v-model="newTask" type="text" class="single_task" id="add_task">
+                        <input v-model="newTask.text" type="text" class="single_task" id="add_task">
                     </label>
                     <button class="tasks" @click="addTask">Add Tasks</button>
                 </nav>
@@ -29,8 +30,12 @@
                 <section id="new_tasks">
                     <ul>
                         <h2><span class="arrow_open"> &dtrif; </span> New Tasks </h2>
-                        <li v-for="task, i in tasks" :key="i">
+                        <li v-for="task, i in tasks" :key="i" :class="task.done === true ? 'done' : '' ">
                             {{ task.text }}
+                            <span class="list_op">
+                                <span class="completed" @click="getDone(i)"><i class="fas fa-times"></i></span>
+                                <span class="delete" @click="deleteTask(i)"><i class="fas fa-trash-alt"></i></span>
+                            </span>
                         </li>
                     </ul>
                 </section>

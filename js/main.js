@@ -10,15 +10,15 @@ var todos = new Vue (
     {
         el : '#container',
         data : {
-            newTask : "",
+            newTask : {text: "", done: false},
             tasks : [
                 {
                     text : 'Fare la spesa', 
-                    done : true,
+                    done : false,
                 },
                 {
                     text : 'Cucinare', 
-                    done : true,
+                    done : false,
                 },
                 {
                     text : 'Scrivere codice', 
@@ -26,5 +26,26 @@ var todos = new Vue (
                 },
             ],
         },
+        methods: {
+            // push new element as task
+            addTask : function() {
+                this.tasks.push(this.newTask);
+                console.log(this.newTask)
+                this.newTask = {text: "", done: false};
+            },
+            // line-through completed tasks
+            getDone : function(i) {
+                if(this.tasks[i].done === false) {
+                    this.tasks[i].done = true;
+                    console.log(this.tasks[i])
+                }else if(this.tasks[i].done === true) {
+                    this.tasks[i].done = false;
+                }
+            },
+            // delete task
+            deleteTask : function(i) {
+                this.tasks.splice(i, 1)
+            }
+        }
     }
 )
