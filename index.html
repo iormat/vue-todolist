@@ -22,7 +22,7 @@
                 <nav>
                     <label for="add_task">
                         Aggiungi alla lista&colon;
-                        <input v-model="newTask.text" type="text" class="single_task" id="add_task">
+                        <input v-model="newTask.text" type="text" class="single_task" id="add_task" @keyup.enter="addTask">
                     </label>
                     <button class="tasks" @click="addTask">Add Tasks</button>
                 </nav>

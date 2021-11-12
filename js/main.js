@@ -29,15 +29,15 @@ var todos = new Vue (
         methods: {
             // push new element as task
             addTask : function() {
-                this.tasks.push(this.newTask);
-                console.log(this.newTask)
+                if(this.newTask.text !== "" && this.newTask.text !== " ") {
+                    this.tasks.push(this.newTask);
+                }
                 this.newTask = {text: "", done: false};
             },
             // line-through completed tasks
             getDone : function(i) {
                 if(this.tasks[i].done === false) {
                     this.tasks[i].done = true;
-                    console.log(this.tasks[i])
                 }else if(this.tasks[i].done === true) {
                     this.tasks[i].done = false;
                 }

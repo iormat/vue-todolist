@@ -95,6 +95,10 @@ li {
     justify-content: space-between;
 }
 
+.list_op {
+    min-width: 62px;
+}
+
 li.done {
     text-decoration: line-through;
 }
@@ -103,7 +107,4 @@ i.fas {
     font-size: 1.5rem;
     cursor: pointer;
     padding: 5px;
-}
-
-.completed {
 }
