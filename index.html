@@ -30,7 +30,8 @@
                 <section id="new_tasks">
                     <ul>
                         <h2><span class="arrow_open"> &dtrif; </span> New Tasks </h2>
-                        <li v-for="task, i in tasks" :key="i" :class="task.done === true ? 'done' : '' ">
+                        <div class="congrats" v-if="tasks.length === 0">Congratulations&excl; There is nothing left to do&period; Get some deserved rest&excl;</div>
+                        <li v-esle v-for="task, i in tasks" :key="i" :class="task.done === true ? 'done' : '' ">
                             {{ task.text }}
                             <span class="list_op">
                                 <span class="completed" @click="getDone(i)"><i class="fas fa-times"></i></span>
